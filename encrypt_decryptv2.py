@@ -28,16 +28,24 @@ def main(args):
         create = Encryption()
         key = create.Create()
         print("🔑 Generated Key:", key.decode())
-        pyperclip.copy(key.decode())
-        print("📋 Key copied to clipboard!")
+        try:
+            pyperclip.copy(key.decode())
+            print("📋 Key copied to clipboard!")
+        except:
+            os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
+            print("📋 Key copied to clipboard!")
         return 
     
     if args.encrypt and args.message and args.key:
         encrypt = Encryption()
         token = encrypt.Encrypt(args.key.encode(),args.message)
         print("🔐 Encrypted:", token.decode())
-        pyperclip.copy(token.decode())
-        print("📋 Encrypted token copied to clipboard!")
+        try:
+            pyperclip.copy(token.decode())
+            print("📋 Encrypted token copied to clipboard!")
+        except:
+            os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
+            print("📋 Encrypted token copied to clipboard!")
         return 
         
     if args.decrypt and args.message and args.key:
@@ -45,8 +53,13 @@ def main(args):
         try:
             message = decrypt.Decrypt(args.key,args.message)
             print("🔓 Decrypted:", message.decode())
-            pyperclip.copy(message.decode())
-            print("📋 Decrypted message copied to clipboard!")
+            try:
+                pyperclip.copy(message.decode())
+                print("📋 Decrypted message copied to clipboard!")
+            except:
+                
+                os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
+                print("📋 Decrypted message copied to clipboard!")
         except Exception as e:
             print("❌ Decryption failed:", e)
         return
