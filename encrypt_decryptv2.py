@@ -33,7 +33,7 @@ def main(args):
             print("📋 Key copied to clipboard!")
         except:
             os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
-            print("📋 Key copied to clipboard!")
+            
         return 
     
     if args.encrypt and args.message and args.key:
@@ -45,7 +45,7 @@ def main(args):
             print("📋 Encrypted token copied to clipboard!")
         except:
             os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
-            print("📋 Encrypted token copied to clipboard!")
+            
         return 
         
     if args.decrypt and args.message and args.key:
@@ -59,7 +59,7 @@ def main(args):
             except:
                 
                 os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
-                print("📋 Decrypted message copied to clipboard!")
+                
         except Exception as e:
             print("❌ Decryption failed:", e)
         return
