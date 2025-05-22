@@ -44,7 +44,7 @@ def main(args):
             pyperclip.copy(token.decode())
             print("📋 Encrypted token copied to clipboard!")
         except:
-            os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
+            os.system(f'echo "{token.decode()}" | xclip -selection clipboard')
             
         return 
         
@@ -58,7 +58,7 @@ def main(args):
                 print("📋 Decrypted message copied to clipboard!")
             except:
                 
-                os.system(f'echo "{key.decode()}" | xclip -selection clipboard')
+                os.system(f'echo "{message.decode()}" | xclip -selection clipboard')
                 
         except Exception as e:
             print("❌ Decryption failed:", e)
